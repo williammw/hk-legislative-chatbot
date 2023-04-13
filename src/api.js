@@ -4,7 +4,7 @@ export async function fetchLatestLegCoData() {
   const response = await fetch('https://app4.legco.gov.hk/mapi/tc/api/LASS/getListMember');
   const data = await response.json();
   const members = data.data.map(member => member.salute_name).join(', ');
-  // console.log(members, data.data.length);
+  console.log(members, data.data.length);
   const totalMembers = data.data.length;
   return `There are ${totalMembers} members in the Legislative Council of the Hong Kong Special Administrative Region. The current members include: ${members}`;
 }

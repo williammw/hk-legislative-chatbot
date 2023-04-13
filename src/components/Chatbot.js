@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { fetchGPT4Response, fetchLatestLegCoData } from '../api';
-
+import './Chatbot.css';
 function Chatbot() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
