@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { fetchGPT4Response } from '../api';
+import { fetchGPT4Response, fetchLatestLegCoData } from '../api';
 
 function Chatbot() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
+  const [legCoContext, setLegCoContext] = useState('');
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -12,6 +13,15 @@ function Chatbot() {
 
   useEffect(scrollToBottom, [messages]);
 
+ useEffect(() => {
+  const fetchData = async () => {
+    const context = await fetchLatestLegCoData();
+    setLegCoContext(context);
+  };
+
+  fetchData();
+}, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (input.trim() === '') return;
@@ -19,7 +29,7 @@ function Chatbot() {
     setMessages([...messages, { text: input, sender: 'user' }]);
     setInput('');
 
-    const response = await fetchGPT4Response(input);
+    const response = await fetchGPT4Response(input, legCoContext);
     setMessages((prevMessages) => [
       ...prevMessages,
       { text: response, sender: 'ai' },
