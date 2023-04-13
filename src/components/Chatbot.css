@@ -1,0 +1,8 @@
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages > div {
+  max-width: 75%;
+}
