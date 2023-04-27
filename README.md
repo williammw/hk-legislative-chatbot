@@ -1,7 +1,8 @@
 # Hong Kong Legislative Chatbot
 
 The 'hk-legislative-chatbot' is an AI-powered chatbot designed to provide information about the Legislative Council of the Hong Kong Special Administrative Region. The chatbot is knowledgeable and can communicate in both English and Chinese.
-
+# DEMO 
+https://hk-legislative-chatbot.vercel.app/
 ## Technical Specifications
 
 - **Base Model**: GPT-4 (text-davinci-003)
